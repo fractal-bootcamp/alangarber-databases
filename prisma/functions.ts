@@ -11,9 +11,8 @@ async function addBook(book: { title: string, author: {}, ISBN: string, }) {
 }
 
 async function borrowBook(book: { title: string, author: {}, ISBN: string, }, member: { id: number, }) {
-    return await prisma.book.upsert({
+    return await prisma.book.update({
         where: { ISBN: book.ISBN },
-        update: { memberId: member.id },
-        create: { ...book },
+        data: { memberId: member.id },
     })
 }
