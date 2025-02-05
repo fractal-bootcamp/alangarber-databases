@@ -9,10 +9,10 @@ datasource db {
 
 model Book {
   id       Int     @id @default(autoincrement())
-  title    String @unique
+  title    String
   author   Author  @relation(fields: [authorId], references: [id])
   authorId Int
-  ISBN     String
+  ISBN     String @unique
   genres   Genre[]
   member   Member? @relation(fields: [memberId], references: [id])
   memberId Int?
